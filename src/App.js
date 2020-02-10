@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import * as S from './App.styled'
+import Settings from './components/settings/settings'
+import Preview from './components/preview/preview'
 
-function App() {
+const App = () => {
+  const [file, setFile] = useState(null)
+
+  const handleChange = e => {
+    setFile(URL.createObjectURL(e.target.files[0]))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <S.GlobalStyle />
+      <S.App>
+        <Settings onChange={handleChange} />
+        <header className="App-header">test</header>
+        <Preview file={file} />
+      </S.App>
+    </React.Fragment>
+  )
 }
 
-export default App;
+export default App
