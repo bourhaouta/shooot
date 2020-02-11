@@ -8,5 +8,5 @@ export const GlobalStyle = createGlobalStyle`
 
 export const App = styled.div`
   min-height: 100vh;
-  background-color: #eee;
+  background-color: #f7fafc;
 `
