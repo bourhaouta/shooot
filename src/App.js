@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import * as Vibrant from 'node-vibrant'
 import html2canvas from 'html2canvas'
+import * as Vibrant from 'node-vibrant'
+import React, { useEffect, useState } from 'react'
 import * as S from './App.styled'
-import Settings from './components/settings/settings'
 import Actions from './components/actions/actions'
 import Preview from './components/preview/preview'
+import Settings from './components/settings/settings'
 
 const App = () => {
   const [file, setFile] = useState(null)
-  const [spacing, setSpacing] = useState(2)
+  const [canvasURL, setCanvasURL] = useState(null)
+  const [spacing, setSpacing] = useState(64)
   const [vibrant, setVibrant] = useState('#fff')
-  const [radius, setRadius] = useState(5)
+  const [radius, setRadius] = useState(16)
 
   const handleImageChange = e => setFile(URL.createObjectURL(e.target.files[0]))
 
@@ -26,11 +27,11 @@ const App = () => {
   }, [file])
 
   const handleSave = () => {
-    html2canvas(document.getElementById('capture'), {
+    html2canvas(document.getElementById('shot'), {
       letterRendering: 1,
       allowTaint: true,
     }).then(canvas => {
-      document.body.appendChild(canvas)
+      setCanvasURL(canvas.toDataURL())
     })
   }
 
@@ -52,6 +53,7 @@ const App = () => {
           radius={radius}
           vibrant={vibrant}
         />
+        {canvasURL && <img src={canvasURL} alt="" />}
       </S.App>
     </React.Fragment>
   )
