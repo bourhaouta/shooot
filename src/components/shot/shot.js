@@ -1,10 +1,12 @@
 import React from 'react'
 import * as S from './shot.styled'
 
-const Shot = ({ file, spacing, radius, vibrant }) => (
-  <S.Shot vibrant={vibrant}>
-    <S.Image file={file} spacing={spacing} radius={radius} />
-  </S.Shot>
+const Shot = ({ file, spacing, radius, vibrant, scale }) => (
+  <S.Wrapper scale={scale}>
+    <S.Shot id="shot" vibrant={vibrant}>
+      <S.Image file={file} spacing={spacing} radius={radius} />
+    </S.Shot>
+  </S.Wrapper>
 )
 
 export default Shot
