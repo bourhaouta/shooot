@@ -2,16 +2,16 @@ import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   ${({ scale }) => css`
-    transform: scale(${scale / 100});
+    transform: scale(${scale});
   `};
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   width: 800px;
 `
 
 export const Shot = styled.div`
+  background-color: ${({ vibrant }) => vibrant};
   position: relative;
   transition: 0.25s background-color;
-  background-color: ${({ vibrant }) => vibrant};
   overflow: hidden;
 
   &::before {
@@ -30,6 +30,7 @@ export const Image = styled.div`
     width: calc(100% - ${spacing}px * 2);
     height: calc(100% - ${spacing}px);
   `}
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: absolute;
   top: 0;
   left: 0;
