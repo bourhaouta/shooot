@@ -3,7 +3,7 @@ import Shot from '../shot/shot'
 import * as S from './preview.styled'
 
 const Preview = ({ file, spacing, radius, vibrant }) => {
-  const [scale, setScale] = useState(75)
+  const [scale, setScale] = useState(0.75)
 
   const shotProps = { file, radius, spacing, vibrant, scale }
 
@@ -13,9 +13,9 @@ const Preview = ({ file, spacing, radius, vibrant }) => {
 
       <S.Scale
         type="range"
-        min="10"
-        max="100"
-        step="5"
+        min=".1"
+        max="1"
+        step=".1"
         onChange={({ target }) => setScale(target.value)}
         value={scale}
       />

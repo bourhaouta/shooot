@@ -23,7 +23,7 @@ const App = () => {
     file &&
       Vibrant.from(file)
         .getPalette()
-        .then(({ Vibrant }) => setVibrant(Vibrant.hex))
+        .then(({ LightMuted }) => setVibrant(LightMuted.hex))
   }, [file])
 
   const handleSave = () => {

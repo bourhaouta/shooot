@@ -1,4 +1,5 @@
 import React from 'react'
+import Slider from '../slider/slider'
 
 const Settings = ({
   onImageChange,
@@ -11,19 +12,19 @@ const Settings = ({
     <div>
       <input type="file" onChange={onImageChange} />
 
-      <input
+      <Slider
         type="range"
         min="0"
-        max="20"
+        max="300"
         step=".5"
         onChange={onSpacingChange}
         value={spacing}
       />
 
-      <input
+      <Slider
         type="range"
         min="0"
-        max="50"
+        max="300"
         step=".5"
         onChange={onRadiusChange}
         value={radius}
