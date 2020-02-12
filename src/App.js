@@ -1,23 +1,25 @@
-import html2canvas from 'html2canvas'
+import domtoimage from 'dom-to-image'
+import { saveAs } from 'file-saver'
 import * as Vibrant from 'node-vibrant'
 import React, { useEffect, useState } from 'react'
 import * as S from './App.styled'
-import Actions from './components/actions/actions'
+import Navbar from './components/navbar/navbar'
 import Preview from './components/preview/preview'
 import Settings from './components/settings/settings'
 
 const App = () => {
   const [file, setFile] = useState(null)
-  const [canvasURL, setCanvasURL] = useState(null)
-  const [spacing, setSpacing] = useState(64)
+  const [spacing, setSpacing] = useState(10)
   const [vibrant, setVibrant] = useState('#fff')
-  const [radius, setRadius] = useState(16)
+  const [radius, setRadius] = useState(24)
 
   const handleImageChange = e => setFile(URL.createObjectURL(e.target.files[0]))
 
   const handleSpacingChange = ({ target }) => setSpacing(target.value)
 
   const handleRadiusChange = ({ target }) => setRadius(target.value)
+
+  const handleVibrantChange = ({ target }) => setVibrant(target.value)
 
   useEffect(() => {
     file &&
@@ -27,33 +29,34 @@ const App = () => {
   }, [file])
 
   const handleSave = () => {
-    html2canvas(document.getElementById('shot'), {
-      letterRendering: 1,
-      allowTaint: true,
-    }).then(canvas => {
-      setCanvasURL(canvas.toDataURL())
-    })
+    domtoimage
+      .toBlob(document.getElementById('shot'))
+      .then(blob => saveAs(blob, 'my-node.png'))
+      .catch(error => console.error('oops, something went wrong!', error))
   }
 
   return (
     <React.Fragment>
       <S.GlobalStyle />
       <S.App>
+        <Navbar onSave={handleSave} />
+
         <Settings
           onImageChange={handleImageChange}
           onSpacingChange={handleSpacingChange}
           spacing={spacing}
           onRadiusChange={handleRadiusChange}
           radius={radius}
+          onVibrantChange={handleVibrantChange}
+          vibrant={vibrant}
         />
-        <Actions onSave={handleSave} />
+
         <Preview
           file={file}
           spacing={spacing}
           radius={radius}
           vibrant={vibrant}
         />
-        {canvasURL && <img src={canvasURL} alt="" />}
       </S.App>
     </React.Fragment>
   )
