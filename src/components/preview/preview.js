@@ -3,7 +3,7 @@ import Shot from '../shot/shot'
 import * as S from './preview.styled'
 
 const Preview = ({ file, spacing, radius, vibrant }) => {
-  const [scale, setScale] = useState(0.75)
+  const [scale, setScale] = useState(0.5)
 
   const shotProps = { file, radius, spacing, vibrant, scale }
 

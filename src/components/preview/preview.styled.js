@@ -6,7 +6,6 @@ export const Preview = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 `
 
 export const Scale = styled(Slider)`
