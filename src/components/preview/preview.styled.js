@@ -6,10 +6,11 @@ export const Preview = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 `
 
 export const Scale = styled(Slider)`
-  position: absolute;
+  position: fixed;
   right: 24px;
   bottom: 24px;
 `

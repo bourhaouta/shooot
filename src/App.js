@@ -6,11 +6,12 @@ import * as S from './App.styled'
 import Navbar from './components/navbar/navbar'
 import Preview from './components/preview/preview'
 import Settings from './components/settings/settings'
+import { colors } from './theme'
 
 const App = () => {
   const [file, setFile] = useState(null)
   const [spacing, setSpacing] = useState(10)
-  const [vibrant, setVibrant] = useState('#fff')
+  const [vibrant, setVibrant] = useState(colors.white)
   const [radius, setRadius] = useState(24)
 
   const handleImageChange = e => setFile(URL.createObjectURL(e.target.files[0]))

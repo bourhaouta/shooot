@@ -5,6 +5,8 @@ const Slider = styled.input`
   height: 6px;
   border-radius: 6px;
   background-color: rgba(234, 76, 137, 0.15);
+  width: 100%;
+  max-width: 200px;
 
   &::-webkit-slider-thumb {
     appearance: none;
