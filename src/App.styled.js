@@ -1,5 +1,6 @@
 import reset from 'minireset.css'
 import styled, { createGlobalStyle } from 'styled-components'
+import { colors, fontSize } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -7,11 +8,11 @@ export const GlobalStyle = createGlobalStyle`
 
 export const App = styled.div`
   display: grid;
-  grid-template-rows: 56px minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   grid-template-columns: 330px minmax(0, 1fr);
-  background-color: #f7fafc;
+  background-color: ${colors.gray[100]};
   height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', SimSun, sans-serif;
+  font-size: ${fontSize.base};
 `
