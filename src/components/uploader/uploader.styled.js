@@ -1,12 +1,16 @@
-import styled from 'styled-components'
-import { colors, radius, spacing } from '../../theme'
+import styled from "styled-components";
+import { colors, radius, spacing } from "../../theme";
 
 export const Uploader = styled.div`
   position: relative;
   border-radius: ${radius.default};
   background-color: ${colors.gray[200]};
   padding: ${spacing[12]};
-`
+
+  :focus-within {
+    background-color: ${colors.gray[300]};
+  }
+`;
 
 export const Label = styled.label`
   display: block;
@@ -17,7 +21,7 @@ export const Label = styled.label`
   width: 100%;
   text-align: center;
   color: ${colors.gray[800]};
-`
+`;
 
 export const Input = styled.input`
   position: absolute;
@@ -27,4 +31,4 @@ export const Input = styled.input`
   cursor: pointer;
   width: 100%;
   height: 100%;
-`
+`;
