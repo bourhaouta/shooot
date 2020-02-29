@@ -6,6 +6,10 @@ export const Uploader = styled.div`
   border-radius: ${radius.default};
   background-color: ${colors.gray[200]};
   padding: ${spacing[12]};
+
+  :focus-within {
+    background-color: ${colors.gray[300]};
+  }
 `
 
 export const Label = styled.label`
