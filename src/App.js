@@ -8,6 +8,13 @@ import Preview from './components/preview/preview'
 import Settings from './components/settings/settings'
 import { colors } from './theme'
 
+const saveDomToImage = ({ elId, blobName }) => {
+  domtoimage
+    .toBlob(document.getElementById(elId))
+    .then(blob => saveAs(blob, blobName))
+    .catch(error => console.error('oops, something went wrong!', error))
+}
+
 const App = () => {
   const [file, setFile] = useState(null)
   const [spacing, setSpacing] = useState(10)
@@ -30,10 +37,7 @@ const App = () => {
   }, [file])
 
   const handleSave = () => {
-    domtoimage
-      .toBlob(document.getElementById('shot'))
-      .then(blob => saveAs(blob, 'my-node.png'))
-      .catch(error => console.error('oops, something went wrong!', error))
+    saveDomToImage('shot', 'my-node.png')
   }
 
   return (
