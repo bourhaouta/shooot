@@ -17,15 +17,9 @@ const saveDomToImage = ({ elId, blobName }) => {
 
 const App = () => {
   const [file, setFile] = useState(null)
-  const [spacing, setSpacing] = useState(10)
   const [vibrant, setVibrant] = useState(colors.white)
-  const [radius, setRadius] = useState(24)
 
   const handleImageChange = e => setFile(URL.createObjectURL(e.target.files[0]))
-
-  const handleSpacingChange = ({ target }) => setSpacing(target.value)
-
-  const handleRadiusChange = ({ target }) => setRadius(target.value)
 
   const handleVibrantChange = ({ target }) => setVibrant(target.value)
 
@@ -48,20 +42,11 @@ const App = () => {
 
         <Settings
           onImageChange={handleImageChange}
-          onSpacingChange={handleSpacingChange}
-          spacing={spacing}
-          onRadiusChange={handleRadiusChange}
-          radius={radius}
           onVibrantChange={handleVibrantChange}
           vibrant={vibrant}
         />
 
-        <Preview
-          file={file}
-          spacing={spacing}
-          radius={radius}
-          vibrant={vibrant}
-        />
+        <Preview file={file} vibrant={vibrant} />
       </S.App>
     </React.Fragment>
   )

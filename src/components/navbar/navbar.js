@@ -6,7 +6,7 @@ const Actions = ({ onSave }) => {
   return (
     <S.Navbar>
       <S.Brand>Dribbblor</S.Brand>
-      <Button onClick={onSave} icon="download">
+      <Button onClick={onSave} icon='download'>
         Download
       </Button>
     </S.Navbar>
