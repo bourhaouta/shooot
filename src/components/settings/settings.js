@@ -5,19 +5,19 @@ import Swatcher from '../swatcher/swatcher'
 import Uploader from '../uploader/uploader'
 import * as S from './settings.styled'
 
-const Settings = ({ onImageChange, onVibrantChange, vibrant }) => {
+const Settings = () => {
   const { spacing, setSpacing, radius, setRadius } = useContext(SettingsContext)
 
   return (
     <S.Settings>
       <S.Controller>
         <S.Label htmlFor='uploader'>Upload your image</S.Label>
-        <Uploader id='uploader' onImageChange={onImageChange} />
+        <Uploader id='uploader' />
       </S.Controller>
 
       <S.Controller inline>
         <S.Label>Background</S.Label>
-        <Swatcher onVibrantChange={onVibrantChange} vibrant={vibrant} />
+        <Swatcher />
       </S.Controller>
 
       <S.Controller inline>

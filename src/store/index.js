@@ -7,15 +7,22 @@ export default ({ children }) => {
   const [file, setFile] = useState(null)
   const [spacing, setSpacing] = useState(10)
   const [vibrant, setVibrant] = useState(colors.white)
+  const [palette, setPalette] = useState([])
   const [radius, setRadius] = useState(24)
 
   const settings = {
     file,
-    setFile,
+    setFile: e => setFile(URL.createObjectURL(e.target.files[0])),
+
     spacing,
     setSpacing,
+
     vibrant,
     setVibrant,
+
+    palette,
+    setPalette,
+
     radius,
     setRadius,
   }

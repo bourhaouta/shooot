@@ -1,16 +1,47 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { SettingsContext } from '../../store'
+import * as S from './swatcher.styled'
 
-const Swatcher = ({ onVibrantChange, vibrant }) => {
+const Swatcher = () => {
+  const { vibrant, setVibrant, palette } = useContext(SettingsContext)
+
   return (
-    <React.Fragment>
-      <input
-        type="color"
-        onChange={onVibrantChange}
-        value={vibrant}
-        placeholder={vibrant}
-      />
-      <input type="text" onChange={onVibrantChange} value={vibrant} />
-    </React.Fragment>
+    <div>
+      <S.Swatcher>
+        <S.Picker>
+          <label htmlFor='picker'>
+            <span role='img' aria-label='Color pciker'>
+              🎨
+            </span>
+          </label>
+          <input
+            id='picker'
+            type='color'
+            onChange={e => setVibrant(e.target.value)}
+            value={vibrant}
+            placeholder={vibrant}
+          />
+        </S.Picker>
+        <input
+          type='text'
+          onChange={e => setVibrant(e.target.value)}
+          value={vibrant}
+        />
+      </S.Swatcher>
+
+      {palette && (
+        <S.Palette>
+          {palette.map(({ hex }) => (
+            <S.PaletteItem
+              key={hex}
+              color={hex}
+              isSelected={hex === vibrant}
+              onClick={() => setVibrant(hex)}
+            />
+          ))}
+        </S.Palette>
+      )}
+    </div>
   )
 }
 

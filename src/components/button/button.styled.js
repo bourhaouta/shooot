@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { colors, radius, spacing } from '../../theme'
 
 export const Button = styled.button`
@@ -14,12 +14,26 @@ export const Button = styled.button`
   font-size: inherit;
   line-height: 0;
 
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${colors.gray[200]};
+      color: ${colors.gray[600]};
+      cursor: not-allowed;
+
+      ${Icon} {
+        path {
+          fill: ${colors.gray[600]};
+        }
+      }
+    `}
+
   &:hover {
     opacity: 0.9;
   }
 `
 
-export const ButtonIcon = styled.i`
+export const Icon = styled.i`
   margin-right: ${spacing[12]};
   margin-left: -${spacing[4]};
 `
