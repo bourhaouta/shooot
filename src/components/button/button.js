@@ -3,12 +3,18 @@ import { colors } from '../../theme'
 import Icon from '../icon/icon'
 import * as S from './button.styled'
 
-export const Button = ({ icon, onClick, children, type = 'button' }) => (
-  <S.Button type={type} onClick={onClick}>
+export const Button = ({
+  type = 'button',
+  children,
+  disabled,
+  icon,
+  onClick,
+}) => (
+  <S.Button type={type} disabled={disabled} onClick={onClick}>
     {icon && (
-      <S.ButtonIcon>
+      <S.Icon>
         <Icon name={icon} color={colors.white} />
-      </S.ButtonIcon>
+      </S.Icon>
     )}
 
     <span>{children}</span>

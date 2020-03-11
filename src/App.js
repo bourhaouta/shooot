@@ -1,14 +1,14 @@
 import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 import * as Vibrant from 'node-vibrant'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import * as S from './App.styled'
 import Navbar from './components/navbar/navbar'
 import Preview from './components/preview/preview'
 import Settings from './components/settings/settings'
-import { colors } from './theme'
+import { SettingsContext } from './store'
 
-const saveDomToImage = ({ elId, blobName }) => {
+const saveDomToImage = (elId, blobName) => {
   domtoimage
     .toBlob(document.getElementById(elId))
     .then(blob => saveAs(blob, blobName))
@@ -16,25 +16,19 @@ const saveDomToImage = ({ elId, blobName }) => {
 }
 
 const App = () => {
-  const [file, setFile] = useState(null)
-  const [spacing, setSpacing] = useState(10)
-  const [vibrant, setVibrant] = useState(colors.white)
-  const [radius, setRadius] = useState(24)
-
-  const handleImageChange = e => setFile(URL.createObjectURL(e.target.files[0]))
-
-  const handleSpacingChange = ({ target }) => setSpacing(target.value)
-
-  const handleRadiusChange = ({ target }) => setRadius(target.value)
-
   const handleVibrantChange = ({ target }) => setVibrant(target.value)
+
+  const { file, vibrant, setVibrant, setPalette } = useContext(SettingsContext)
 
   useEffect(() => {
     file &&
       Vibrant.from(file)
         .getPalette()
-        .then(({ LightMuted }) => setVibrant(LightMuted.hex))
-  }, [file])
+        .then(palette => {
+          setVibrant(palette.LightMuted.hex)
+          setPalette(Object.values(palette))
+        })
+  }, [file, setPalette, setVibrant])
 
   const handleSave = () => {
     saveDomToImage('shot', 'my-node.png')
@@ -46,22 +40,9 @@ const App = () => {
       <S.App>
         <Navbar onSave={handleSave} />
 
-        <Settings
-          onImageChange={handleImageChange}
-          onSpacingChange={handleSpacingChange}
-          spacing={spacing}
-          onRadiusChange={handleRadiusChange}
-          radius={radius}
-          onVibrantChange={handleVibrantChange}
-          vibrant={vibrant}
-        />
+        <Settings onVibrantChange={handleVibrantChange} vibrant={vibrant} />
 
-        <Preview
-          file={file}
-          spacing={spacing}
-          radius={radius}
-          vibrant={vibrant}
-        />
+        <Preview file={file} vibrant={vibrant} />
       </S.App>
     </React.Fragment>
   )
