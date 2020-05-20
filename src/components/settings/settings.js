@@ -6,13 +6,44 @@ import Uploader from '../uploader/uploader'
 import * as S from './settings.styled'
 
 const Settings = () => {
-  const { spacing, setSpacing, radius, setRadius } = useContext(SettingsContext)
+  const {
+    spacing,
+    setSpacing,
+    radius,
+    setRadius,
+    isToolbar,
+    setIsToolbar,
+    isExtended,
+    setIsExtended,
+  } = useContext(SettingsContext)
 
   return (
     <S.Settings>
       <S.Controller>
         <S.Label htmlFor='uploader'>Upload your image</S.Label>
         <Uploader id='uploader' />
+      </S.Controller>
+
+      <S.Controller inline>
+        <S.Label htmlFor='toolbar'>Toolbar</S.Label>
+
+        <input
+          id='toolbar'
+          type='checkbox'
+          onChange={() => setIsToolbar(!isToolbar)}
+          checked={isToolbar}
+        />
+      </S.Controller>
+
+      <S.Controller inline>
+        <S.Label htmlFor='extended'>Extended</S.Label>
+
+        <input
+          id='extended'
+          type='checkbox'
+          onChange={() => setIsExtended(!isExtended)}
+          checked={isExtended}
+        />
       </S.Controller>
 
       <S.Controller inline>
@@ -24,9 +55,7 @@ const Settings = () => {
         <S.Label>Spacing</S.Label>
         <Slider
           type='range'
-          min='0'
           max='25'
-          step='.5'
           onChange={({ target }) => setSpacing(target.value)}
           value={spacing}
         />
@@ -36,9 +65,7 @@ const Settings = () => {
         <S.Label>Radius</S.Label>
         <Slider
           type='range'
-          min='0'
-          max='300'
-          step='.5'
+          max='100'
           onChange={({ target }) => setRadius(target.value)}
           value={radius}
         />

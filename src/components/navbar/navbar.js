@@ -8,7 +8,10 @@ const Actions = ({ onSave }) => {
 
   return (
     <S.Navbar>
-      <S.Brand>Dribbblor</S.Brand>
+      <S.Brand href='/'>
+        <img src={require('../../images/brand.svg')} alt='Dribbblor' />
+      </S.Brand>
+
       <Button disabled={!file} onClick={onSave} icon='download'>
         Download
       </Button>

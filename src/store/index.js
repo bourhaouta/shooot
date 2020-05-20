@@ -6,9 +6,11 @@ export const SettingsContext = createContext(null)
 export default ({ children }) => {
   const [file, setFile] = useState(null)
   const [spacing, setSpacing] = useState(10)
-  const [vibrant, setVibrant] = useState(colors.white)
+  const [vibrant, setVibrant] = useState(colors.gray[100])
   const [palette, setPalette] = useState([])
-  const [radius, setRadius] = useState(24)
+  const [radius, setRadius] = useState(8)
+  const [isToolbar, setIsToolbar] = useState(true)
+  const [isExtended, setIsExtended] = useState(true)
 
   const settings = {
     file,
@@ -25,6 +27,12 @@ export default ({ children }) => {
 
     radius,
     setRadius,
+
+    isToolbar,
+    setIsToolbar,
+
+    isExtended,
+    setIsExtended,
   }
 
   return (

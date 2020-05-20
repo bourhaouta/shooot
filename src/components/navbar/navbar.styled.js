@@ -10,6 +10,19 @@ export const Navbar = styled.nav`
   padding: ${spacing[10]};
 `
 
-export const Brand = styled.span`
+export const Brand = styled.a`
+  display: inline-flex;
+  transition: 0.25s opacity;
   margin-right: auto;
+  height: ${spacing[32]};
+
+  img {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
 `

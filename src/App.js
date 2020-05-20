@@ -25,7 +25,7 @@ const App = () => {
       Vibrant.from(file)
         .getPalette()
         .then(palette => {
-          setVibrant(palette.LightMuted.hex)
+          setVibrant(palette.Vibrant.hex)
           setPalette(Object.values(palette))
         })
   }, [file, setPalette, setVibrant])
