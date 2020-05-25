@@ -5,7 +5,6 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Dribbble shot generator" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -16,25 +15,23 @@
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
-
+      
       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Dribbblor</title>
+    <title>%REACT_APP_WEBSITE_NAME% - %REACT_APP_WEBSITE_DESCRIPTION%</title>
+    <meta name="description" content="%REACT_APP_WEBSITE_DESCRIPTION%" />
     <!-- Open Graph -->
-    <meta property="og:title" content="Dribbblor" />
+    <meta property="og:title" content="%REACT_APP_WEBSITE_NAME%" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Dribbble shot generator" />
-    <meta property="og:url" content="https://dribbblor.bourhaouta.com" />
-    <meta
-      property="og:image"
-      content="https://dribbblor.bourhaouta.com/opengraph.png"
-    />
+    <meta property="og:description" content="%REACT_APP_WEBSITE_DESCRIPTION%" />
+    <meta property="og:url" content="%REACT_APP_WEBSITE_URL%" />
+    <meta property="og:image" content="%REACT_APP_WEBSITE_URL%/opengraph.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <!-- Twitter Card -->
-    <meta name="twitter:creator" content="@bourhaouta" />
+    <meta name="twitter:creator" content="@%REACT_APP_OWNER_USERNAME%" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

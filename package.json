@@ -1,29 +1,37 @@
 {
-  "name": "dribbblor",
-  "version": "0.1.0",
-  "homepage": "https://dribbblor.bourhaouta.com",
+  "name": "shooot",
+  "description": "Free Dribbble shots generator",
+  "version": "0.2.0",
+  "author": {
+    "name": "bourhaouta",
+    "email": "bourhaouta@gmail.com",
+    "url": "https://bourhaouta.com"
+  },
+  "homepage": "https://shooot.bourhaouta.com",
+  "repository": "https://github.com/bourhaouta/shooot",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "classnames": "^2.2.6",
     "dom-to-image": "^2.6.0",
+    "dom-to-image-more": "^2.8.0",
     "file-saver": "^2.0.2",
     "minireset.css": "0.0.6",
     "node-vibrant": "^3.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
     "react-scripts": "^3.4.0",
-    "styled-components": "^5.0.1",
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run tailwind:css && react-scripts start",
+    "build": "npm run tailwind:purge && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "format:prettier": "prettier --write 'src/**/*.js'"
+    "tailwind:css": "tailwind build src/tailwind/index.css -o src/tailwind/generated.css",
+    "tailwind:purge": "NODE_ENV=production npm run tailwind:css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,9 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "prettier": "^1.19.1"
   }
 }
