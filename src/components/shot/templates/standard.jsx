@@ -1,7 +1,7 @@
 import React from 'react'
 import Toolbar from '../../atmos/toolbar/toolbar'
 
-const Standard = ({ file, hasToolbar, radius, spacing }) => (
+const Standard = ({ file, hasToolbar, radius, spacing, isCover, isRepeatY }) => (
   <div
     className='absolute inset-0 overflow-hidden bg-gray-200 shadow-2xl'
     style={{
@@ -14,6 +14,8 @@ const Standard = ({ file, hasToolbar, radius, spacing }) => (
         className='absolute inset-0 w-full h-full bg-top bg-full'
         style={{
           backgroundImage: `url(${file})`,
+          backgroundSize: isCover ? 'cover' : null,
+          backgroundRepeat: isRepeatY ? null : 'no-repeat',
         }}
       />
     </Toolbar>
@@ -25,6 +27,8 @@ Standard.defaultProps = {
   hasToolbar: false,
   radius: 2,
   spacing: 20,
+  isCover: false,
+  isRepeatY: false,
 }
 
 export default Standard

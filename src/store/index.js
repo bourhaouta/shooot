@@ -42,6 +42,8 @@ export default ({ children }) => {
   const [isBlurred, setIsBlurred] = useState(false)
   const [settingsVisibility, setSettingsVisibility] = useState(false)
   const [isBlended, setIsBlended] = useState(false)
+  const [isCover, setIsCover] = useState(false)
+  const [isRepeatY, setIsRepeatY] = useState(false)
 
   const settings = {
     settingsVisibility,
@@ -75,6 +77,12 @@ export default ({ children }) => {
 
     hasToolbar,
     setHasToolbar,
+
+    isCover,
+    setIsCover,
+
+    isRepeatY,
+    setIsRepeatY,
   }
 
   return (
