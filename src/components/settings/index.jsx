@@ -8,6 +8,7 @@ import Background from './background'
 import Header from './header'
 import Options from './options'
 import Templates from './templates'
+import Image from './image'
 
 const Settings = ({ onSave }) => {
   const { file, settingsVisibility } = useContext(SettingsContext)
@@ -27,6 +28,8 @@ const Settings = ({ onSave }) => {
         </Controller>
 
         <Templates />
+
+        <Image />
 
         <Background />
 

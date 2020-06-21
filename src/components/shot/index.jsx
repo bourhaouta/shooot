@@ -12,6 +12,8 @@ const Shot = ({ scale }) => {
     spacing,
     template,
     vibrant,
+    isCover,
+    isRepeatY,
   } = useContext(SettingsContext)
 
   const templateProps = {
@@ -25,6 +27,8 @@ const Shot = ({ scale }) => {
     scale,
     spacing,
     vibrant,
+    isCover,
+    isRepeatY,
   }
 
   return <Template id='frame' {...templateProps} />

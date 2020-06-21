@@ -31,6 +31,8 @@ const Template = ({
   style,
   vibrant,
   width,
+  isCover,
+  isRepeatY,
 }) => {
   const SelectedTemplate = getSelectedTemplate(name)
 
@@ -49,6 +51,8 @@ const Template = ({
     hasToolbar,
     radius: getRadius(radius, 'px'),
     spacing: getSpacing(spacing, '%'),
+    isCover,
+    isRepeatY,
   }
 
   return (
